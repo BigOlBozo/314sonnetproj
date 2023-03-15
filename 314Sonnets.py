@@ -11,7 +11,6 @@ links = []
 ids = []
 syn = []
 errors = []
-folders = ['lines','sonnets','synopsi']
 poems = {}
 
 # fill = lists
