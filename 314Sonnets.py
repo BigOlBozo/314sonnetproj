@@ -5,11 +5,9 @@ import random
 
 os.system('cls')
 rhymecount = 0
-options = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 'b', 'n']
 extensions = []
 links = []
 ids = []
-syn = []
 errors = []
 poems = {}
 
@@ -39,6 +37,7 @@ def fill_ext():
   with open('extensions.txt') as f:
     for ext in f:
       extensions.append(ext.strip('\n'))
+
 def write_ids():
   with open('ids.txt', 'a') as f:
     for x in range(1,155):
@@ -63,9 +62,6 @@ def write_txt_and_synopsi(extnum):
       f.write(unicodetoascii(str(str(link))))
     links.append(link)
 
-def write_sonnets(length):
-  for x in range(length):
-    write_txt_and_synopsi(extensions[x])
 
 def clean_brid(extid):
   with open(f'sonnets/{extid}.txt') as f:
@@ -81,14 +77,6 @@ def clean_brid(extid):
     with open(f'sonnets/{extid}.txt', 'w') as h:
       h.write(newline)
   return extid, len(find_all_idx(line, '<span'))
-
-
-def reset_texts():
-  for id in ids:
-    with open(f'bakupsonnets/{id}.txt') as f:
-      for line in f:
-        with open(f'sonnets/{id}.txt', 'w') as h:
-          h.write(line)
 
 def clean(folder, extid):
   with open(f'{folder}/{extid}.txt') as f:
@@ -139,7 +127,6 @@ def nonums(extid):
 def nonumsing():
   for id in ids:
     nonums(id)
-print(folders)
 
 def startup():
   #os.system('cls')
