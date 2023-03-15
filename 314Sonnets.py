@@ -4,13 +4,11 @@ import os
 import random
 
 os.system('cls')
-rhymecount = 0
 extensions = []
 links = []
 ids = []
 errors = []
-poems = {}
-
+folders = ['sonnets']
 # fill = lists
 # write = txts
 # populate = dicts
@@ -130,38 +128,22 @@ def nonumsing():
 
 def startup():
   #os.system('cls')
-  print('1')
   for name in folders:
     newpath = name
     if not os.path.exists(newpath):
       os.makedirs(newpath)
-  print('2')
   with open('extensions.txt','r') as f:
     if len(f.read()) == 0:
       write_ext()
   fill_ext()
-  print('3')
   with open('ids.txt','r') as h:
     if len(h.read()) == 0:
       with open('ids.txt','a') as r:
         for x in range(1,155):
-          r.write(f'{str(x).rjust(3,"0")}\n')   
-  fill_ids()   
-  #q1 = input('Want to reset the sonnets and synopses?\nY/N\nSelection:')
-  q1 = 'y'
-  print('4')
-  if q1.lower() == 'y':
-    #q1a = input('From backups or the site?\n1/2\nSelection:')
-    q1a = '2'
-    if q1a == '1':
-      write_sonnets_bkup()
-      write_clean_synopsi()
-    if q1a == '2':
-      q1aa = input('Are you sure? That will take a very long time.\nY/N\nSelection:')
-      if q1aa.lower() == 'y':
-        print('x')
-        for id in ids:
-          
-          write_txt_and_synopsi(id)
-        
+          r.write(f'{str(x).rjust(3,"0")}\n')  
+  fill_ids()             
+  rewriteq = input('Resest Sonnet Txts?\ny\\n\n')
+  if rewriteq.lower() == 'y':
+    write_txt_and_synopsi(id)
+       
 startup()
